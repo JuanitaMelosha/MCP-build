@@ -168,7 +168,7 @@ class RovoAdapter:
         """Create a Jira issue using Atlassian Document Format for description."""
         payload = {
             "fields": {
-                "project": {"key": project_key},
+                "project": self._project_reference(project_key),
                 "summary": summary,
                 "description": self._adf_text(description),
                 "issuetype": {"name": issue_type},
@@ -341,3 +341,11 @@ class RovoAdapter:
             ],
         }
 
+    def _project_reference(self, project_key_or_id: str) -> dict[str, str]:
+        """Build Jira's project reference from a project key or numeric id."""
+        value = project_key_or_id.strip()
+        if not value:
+            raise ValueError("Jira project key or id cannot be empty.")
+        if value.isdigit():
+            return {"id": value}
+        return {"key": value.upper()}

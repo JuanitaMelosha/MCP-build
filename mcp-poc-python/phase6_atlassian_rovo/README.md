@@ -217,6 +217,9 @@ Copy the desired key:
 ATLASSIAN_JIRA_PROJECT_KEY=DEMO
 ```
 
+The implementation also accepts a numeric Jira project id such as `10000`,
+although a human-readable project key such as `DEMO` is easier to recognize.
+
 ### 4. Discover Gateway Tools
 
 ```bash
