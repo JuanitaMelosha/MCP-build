@@ -1,0 +1,6 @@
+mcp>=1.28,<2
+httpx>=0.28
+jsonschema>=4.26
+rpds-py>=0.25
+rich>=13
+
